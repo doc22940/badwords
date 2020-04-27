@@ -6,27 +6,26 @@ test('String clean test', () => {
     expect(filter.clean('Kawacrepe is cool')).toBe('Kawacrepe is cool');
 });
 
-// test('Custom list', () => {
-//     const filter = new Filter({list: ['test', 'github']});
-//     expect(filter.clean('Github is really helpfull, asshole')).toBe('****** is really helpfull, asshole');
-// })
+test('Custom list', () => {
+    const filter = new Filter({list: ['test', 'github']});
+    expect(filter.clean('Github is really helpfull, asshole')).toBe('****** is really helpfull, asshole');
+})
 
-// test('Contain badwords', () => {
-//     const filter = new Filter();
-//     expect(filter.doesContainBadwords('asshole is a badword')).toEqual({containBadword: true, badwords: ['asshole']});
-//     expect(filter.doesContainBadwords('asshole is a badword and ass too')).toEqual({containBadword: true, badwords: ['asshole', 'ass']});
-// })
+test('Contain badwords', () => {
+    const filter = new Filter();
+    expect(filter.doesContainBadwords('asshole is a badword')).toEqual({containBadword: true, badwords: ['asshole']});
+    expect(filter.doesContainBadwords('asshole is a badword and ass too')).toEqual({containBadword: true, badwords: ['asshole', 'ass']});
+})
 
-// test('Placeholder changed', () => {
-//     const filter = new Filter({placeHolder: 'x'});
-//     expect(filter.clean('asshole')).toBe('xxxxxxx');
-// })
+test('Placeholder changed', () => {
+    const filter = new Filter({placeHolder: 'x'});
+    expect(filter.clean('asshole')).toBe('xxxxxxx');
+})
 
-// test('Custom list + different placeholder', () => {
-//     const filter = new Filter({placeHolder: 'x', list: ['test', 'github']});
-//     expect(filter.clean('Github is really helpfull, asshole')).toBe('xxxxxx is really helpfull, asshole');
-// });
-
+test('Custom list + different placeholder', () => {
+    const filter = new Filter({placeHolder: 'x', list: ['test', 'github']});
+    expect(filter.clean('Github is really helpfull, asshole')).toBe('xxxxxx is really helpfull, asshole');
+});
 
 test('korean badwords', () => {
     const re1 = new RegExp('[^ㄱ-ㅎㅏ-ㅣ가-힣]')
