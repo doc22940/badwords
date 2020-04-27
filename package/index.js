@@ -1,11 +1,12 @@
 const en = require('./langs/en');
 const fr = require('./langs/fr');
 const sp = require('./langs/spanish');
+const kr = require('./langs/kr');
 class Filter {
     constructor(opt = {}) {
         Object.assign(this, {
             splitRegex: opt.splitRegex || /\b/,
-            list: opt.list || en.concat(fr, sp),
+            list: opt.list || en.concat(fr, sp, kr),
             placeHolder: opt.placeHolder || '*',
             replaceRegex: opt.replaceRegex || /\w/g
         });
@@ -16,7 +17,7 @@ class Filter {
     clean(string) {
         return string.split(this.splitRegex).map((word) => {
             return this.isProfane(word) ? this.replaceWord(word) : word;
-        }).join(this.splitRegex.exec(string)[0]);
+        }).join(this.splitRegex.exec(string)? this.splitRegex.exec(string)[0] : ' ');
     }
 
     doesContainBadwords(string, regex) {

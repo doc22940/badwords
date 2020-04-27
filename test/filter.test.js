@@ -26,3 +26,15 @@ test('Custom list + different placeholder', () => {
     const filter = new Filter({placeHolder: 'x', list: ['test', 'github']});
     expect(filter.clean('Github is really helpfull, asshole')).toBe('xxxxxx is really helpfull, asshole');
 });
+
+test('korean badwords', () => {
+    const re1 = new RegExp('[^ㄱ-ㅎㅏ-ㅣ가-힣]')
+    const re2 = new RegExp(/[ㄱ-ㅎㅏ-ㅣ가-힣]/g)
+    const filter = new Filter({ splitRegex: re1, replaceRegex: re2});
+    
+    expect(filter.clean('ㅅㅂ')).toBe('**');
+    expect(filter.clean('ㅅㅂ 시발')).toBe('** **');
+    expect(filter.clean('간나 안녕 시발 알았어 강아지')).toBe('** 안녕 ** 알았어 ***');
+    
+
+});
