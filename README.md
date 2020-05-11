@@ -33,6 +33,6 @@ console.log(filter.doesContainBadwords("Don't be an asshole"));
 const Filter = require('@kawacrepe/badwords');
 const filter = new Filter({list: ['test', 'github'], placeHolder: 'x'});
 
-console.log(filter.clean('Github is really helpfull, asshole'));
-// xxxxxx is really helpfull, asshole
+console.log(filter.clean('Github is really helpful, asshole'));
+// xxxxxx is really helpful, asshole
 ```
