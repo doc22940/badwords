@@ -8,7 +8,7 @@ test('String clean test', () => {
 
 test('Custom list', () => {
     const filter = new Filter({list: ['test', 'github']});
-    expect(filter.clean('Github is really helpful, asshole')).toBe('****** is really helpfull, asshole');
+    expect(filter.clean('Github is really helpful, asshole')).toBe('****** is really helpful, asshole');
 })
 
 test('Contain badwords', () => {
